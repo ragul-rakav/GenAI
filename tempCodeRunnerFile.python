@@ -1,0 +1,18 @@
+import pyautogui as py
+import time
+py.press('win')
+py.typewrite('chr',interval=0.25)
+py.press('enter')
+time.sleep(0.15)
+
+py.press('enter')
+py.hotkey('ctrl','shift','n')
+py.typewrite('youtube.com',interval=0.25)
+py.press('enter')
+py.press('/')
+py.typewrite('Fuction Calling Google ',interval=0.1)
+py.press('enter')
+time.sleep(3)
+py.leftClick()
+mouse_x, mouse_y = py.position()
+print(f"Mouse coordinates: ({mouse_x}, {mouse_y})")
