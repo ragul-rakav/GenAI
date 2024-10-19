@@ -1,0 +1,54 @@
+import google.generativeai as genai
+import pymysql
+genai.configure(api_key='AIzaSyBBgk4J0ZKRvevNNpH9RSVjhHotVu1OxHE')
+
+
+connect = pymysql.connect(
+    user="root",
+    host="localhost",
+    database="genai",
+    password="6454",
+)
+
+def access_table_from_database():
+    cursor = connect.cursor()  
+    query = "SELECT * FROM NOMINAL_ROLL"
+    cursor.execute(query)
+
+    rows = cursor.fetchall()
+    column_names = [desc[0] for desc in cursor.description]  # Fetch column names
+
+    results = [dict(zip(column_names, row)) for row in rows]
+    
+    cursor.close()  # Close the cursor
+    return results  # Return results
+
+# Initialize the generative model
+model = genai.GenerativeModel(
+    model_name="gemini-1.5-flash",
+    system_instruction=(
+        'You are a bot that only analyzes the NOMINAL_ROLL table from the database. '
+        'Answer questions based on the user input by analyzing the SQL table. '
+        'For example, if I ask about "Sanjay P," you must give all details of Sanjay in a dictionary format only. '
+        'If I ask for specific information, like the roll number of "Sanjay P," display it only in dictionary format. '
+        'Only answer questions related to the table in the database; do not answer any other general questions. '
+        'If asked irrelevant questions, say, "I am meant only for questions about student information."'
+        'format: If the user asks for someones roll number you must display only his roll no not every information'
+    ),
+)
+
+while True:
+    user_input = input("Enter your question: ")
+    if user_input.lower() in ("exit", "quit"):
+        break
+    else:
+        # Fetch data from the database
+        table_data = access_table_from_database()
+        
+        # Prepare the context for the model
+        table_data_str = str(table_data)  # Convert the data to string for better analysis
+
+        # Use the model to generate a response based on the user input
+        response = model.generate_content(f"{user_input} {table_data_str}")  
+        print(response.text)
+        print(" ")     
