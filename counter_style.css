@@ -1,0 +1,22 @@
+
+#counterlabel{
+    display: block;
+    font-size: 15em;
+    text-align: center;
+}
+#buttoncontainer{
+    text-align: center;
+}
+.buttons{
+    padding: 10px 20px;
+    text-align: center;
+    color: hsl(79, 90%, 45%);
+    
+    border-radius: 7px;
+    background-color: rgb(29, 24, 94);
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
+.buttons:hover{
+    background-color: rgb(149, 34, 40);
+}
