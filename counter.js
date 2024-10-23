@@ -15,6 +15,3 @@ document.getElementById("res").onclick = function(){
     count=0;
     counterlabel.textContent=count;
 }
-
-
-
