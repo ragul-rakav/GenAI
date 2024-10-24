@@ -50,3 +50,10 @@ document.getElementById("CE").onclick=function(){
     count=''    
     document.getElementById("display").textContent=count;
 }
+document.getElementById("=").onclick=function(){
+    if  (document.getElementById("display").textContent=='420'){
+        document.getElementById("display").textContent="You are a 420";
+    } 
+
+}
+

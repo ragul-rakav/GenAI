@@ -4,6 +4,10 @@
     border-right: 120px;
 
 } */
+body{
+    color: rgb(224, 70, 70);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 #row1{
     text-align: center;
     font-size: 1.5em;
@@ -33,7 +37,7 @@
     margin-left: auto; 
     margin-right: auto;
     /* margin-right: -145px;  */
-    font-size: 2.5em;
+    font-size: 2em;
     
 
 }
