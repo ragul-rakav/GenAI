@@ -68,3 +68,17 @@ body{
 .buttons:hover{
     background-color: rgb(73, 133, 162);
 }
+.opbuttons{
+    background-color: rgb(153, 84, 10);
+    width: 40px;
+    height: 40px;
+    padding: 10px 10px;
+    /* margin: 5px; */
+    border-radius: 6.2px;
+    margin-bottom: 6px;
+    transition: background-color 0.25s;
+    
+}
+.opbuttons:hover{
+    background-color: rgb(146, 59, 6);
+}
